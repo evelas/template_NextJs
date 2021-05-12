@@ -1,14 +1,11 @@
 
 import Link from 'next/link'
 import Layout from '../../components/Layout'
- 
 import { wrapper } from '../../redux/redux-store'
 import { usersActions } from '../../redux/actions/users'
 import List from '../../components/List'
 import { useSelector } from 'react-redux'
 import { AppStateType } from '../../redux/reducers'
-
-
 
 const WithStaticProps = () => {
 
@@ -30,14 +27,12 @@ const WithStaticProps = () => {
       </p>
     </Layout>
   )
-  
 
 }
 
 export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   if (!store.getState().users.profile) {
     store.dispatch(usersActions.loadUsers())
- 
   }
   await store.sagaTask.toPromise()
 })

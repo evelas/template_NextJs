@@ -9,7 +9,7 @@ type PropsType = {
 const ListItem = ({ data }: PropsType) => (
   <Link href="/users/[id]" as={`/users/${data.id}`}>
     <a>
-      {data.id}: {data.fullName}
+      {data.id}: {data.name}
     </a>
   </Link>
 )

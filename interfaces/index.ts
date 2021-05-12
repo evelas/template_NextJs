@@ -1,8 +1,6 @@
 // You can include shared interfaces/types in a separate file
 // and then use them in any component by importing them. For
 // example, to import the interface below do:
-//
-// import { User } from 'path/to/interfaces';
 
 export type User = {
   id: number
@@ -11,13 +9,32 @@ export type User = {
 
 export type UserProfileType = {
   id: number;
+  name: string;
+  username: string;
   email: string;
-  fullName: string;
-  birthday: string;
+  address: address;
   phone: string;
-  calendar: string;
-  result: string;
-  graphs: string;
+  website: string;
+  company: company;
+}
+
+type address = {
+  street: string;
+  suite: string;
+  city: string;
+  zipcode: string;
+  geo: geo;
+}
+
+type geo = {
+  lat: string;
+  lng: string;
+}
+
+type company = {
+  name: string;
+  catchPhrase: string;
+  bs: string;
 }
 
 export type Nullable<T> = null | T;
