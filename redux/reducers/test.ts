@@ -9,7 +9,7 @@ const initialState = {
 const testReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case HYDRATE: {
-      return { ...state, ...action.payload }
+      return { ...state, ...action.payload.test }
     }
     case TypesTest.IS_FETCHING:
       return { 

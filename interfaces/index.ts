@@ -19,3 +19,5 @@ export type UserProfileType = {
   result: string;
   graphs: string;
 }
+
+export type Nullable<T> = null | T;

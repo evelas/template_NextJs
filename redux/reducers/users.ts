@@ -1,33 +1,29 @@
-// import { InferActionsTypes } from './index';
-import { UserProfileType } from './../../interfaces/index';
+import { UserProfileType, Nullable } from './../../interfaces/index';
 import { TypesUsers } from './../actions/users';
 import { HYDRATE } from 'next-redux-wrapper'
+import { AnyAction } from 'redux';
 
-// export type InitialStateUsersType = typeof initialState;
-// type ActionsType = InferActionsTypes<typeof usersActions>;
-
-// первая загрузка map не может по null пройти
-// все таки попробовать сделать по users [{ массив}]
+export type InitialStateUsersType = typeof initialState;
 
 const initialState = {
-  profile: null as Array<UserProfileType> | null,
+  profile: null as Nullable<Array<UserProfileType>> ,
   error: false
 }
 
-const usersReducer = (state = initialState, action: any) => {
+const usersReducer = (state = initialState, action: AnyAction): InitialStateUsersType => {
   switch (action.type) {
     case HYDRATE: {
-      return { ...state, ...action.payload }
+      return { ...state, ...action.payload.users }
     }
     case TypesUsers.SET_USER_DATA:
       return { 
         ...state,
-        ...{ profile: action.payload.profile } ,
+        profile: action.payload.profile,
       };
     case TypesUsers.FAILURE:
       return {
         ...state,
-        ...{ error: action.payload.error },
+        error: action.payload.error,
       }
     default:
       return state

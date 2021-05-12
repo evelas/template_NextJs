@@ -4,6 +4,7 @@ export const TypesUsers = {
   FAILURE: '/reducers/users/FAILURE' as const,
   SET_USER_DATA: '/reducers/users/SET_USER_DATA' as const,
   LOAD_USERS: '/reducers/users/LOAD_USERS' as const,
+  __NEXT_REDUX_WRAPPER_HYDRATE__: '__NEXT_REDUX_WRAPPER_HYDRATE__' as const,
 }
 
 export const usersActions = {

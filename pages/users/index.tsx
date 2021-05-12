@@ -6,12 +6,13 @@ import { wrapper } from '../../redux/redux-store'
 import { usersActions } from '../../redux/actions/users'
 import List from '../../components/List'
 import { useSelector } from 'react-redux'
+import { AppStateType } from '../../redux/reducers'
 
 
 
 const WithStaticProps = () => {
 
-  const { profile } = useSelector((state: any) => state.users);
+  const { profile } = useSelector((state: AppStateType) => state.users);
   const  test  = useSelector((state: any) => state.users);
   console.log(test)
   return (
