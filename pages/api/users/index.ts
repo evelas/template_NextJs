@@ -1,7 +1,6 @@
 import { resultCodeEnum } from './../../../enum/resultCode';
 import Axios  from 'axios';
 
-
 export const instansAxios = Axios.create({
   // withCredentials: true,
   baseURL: 'https://volspb.ru/RESTful/',

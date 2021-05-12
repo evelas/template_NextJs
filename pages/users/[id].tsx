@@ -12,8 +12,8 @@ type PropsType = {
   errors?: string
 }
 
-const StaticPropsDetail = ({ item, errors }: PropsType) => {
-  console.log(item)
+const SSPPropsDetail = ({ item, errors }: PropsType) => {
+ 
   if (errors) {
     return (
       <Layout title="Error | Next.js + TypeScript Example + Redux + Redux Saga">
@@ -35,25 +35,19 @@ const StaticPropsDetail = ({ item, errors }: PropsType) => {
   )
 }
 
-export default StaticPropsDetail
-
+export default SSPPropsDetail
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async ({ store, params }) => {
   if (!store.getState().users.profile) {
     store.dispatch(usersActions.loadUsers())
-   
   }
   await store.sagaTask.toPromise()
   try {
     const id = params?.id
-    const item = store.getState().users.profile?.find((data: any) => data.id === Number(id))
+    const item = store.getState().users.profile?.find((data: UserProfileType) => data.id === Number(id))
     return { props: { item } }
-    
   } catch (err) {
     return { props: { errors: err.message } }
   }
  
 })
-
-// TODO:
-// https://stackoverflow.com/questions/57649207/adding-properties-to-created-redux-store-in-typescript
