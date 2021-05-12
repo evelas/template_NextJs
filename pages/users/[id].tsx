@@ -39,14 +39,14 @@ export default StaticPropsDetail
 
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(async ({ store, params }) => {
-  if (!store.getState().users) {
+  if (!store.getState().users.profile) {
     store.dispatch(usersActions.loadUsers())
    
   }
   await store.sagaTask.toPromise()
   try {
     const id = params?.id
-    const item = store.getState().users?.find((data: any) => data.id === Number(id))
+    const item = store.getState().users.profile?.find((data: any) => data.id === Number(id))
     return { props: { item } }
     
   } catch (err) {
